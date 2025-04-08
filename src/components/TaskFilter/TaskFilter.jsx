@@ -7,8 +7,8 @@ const TaskFilter = ({ filter, setFilter }) => {
         { label: "Todas", value: "all" },
         { label: "Activas", value: "active" },
         { label: "Completadas", value: "completed" }
+        //.map() para recorrer el array y crear un botón para cada filtro.
       ].map(({ label, value }) => (
-        // Recorremos el array de filtros para renderizar un botón por cada uno
         <button
         // Usamos el valor del filtro como clave única
           key={value}

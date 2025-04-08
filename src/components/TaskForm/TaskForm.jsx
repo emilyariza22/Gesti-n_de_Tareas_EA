@@ -1,5 +1,4 @@
-// Importamos los hooks de React y la librería uuid para generar IDs únicos
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react"; // Importamos los hooks de React
 import { v4 as uuidv4 } from "uuid"; // Para generar un ID único por cada tarea
 
 // Definimos el componente TaskForm que recibe varias props
@@ -65,17 +64,29 @@ const TaskForm = ({ addTask, updateTask, editingTask, setEditingTask }) => {
       {/* Campo de entrada para el título */}
       <input
         type="text"
-        placeholder="Título"
+        placeholder="Título de tu Tarea"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        autoFocus
+        pattern='[A-Za-z0-9 ]{3,50}'
+        maxLength={50}
+        title="Debe tener entre 3 y 50 letras, números o espacios"
       />
+      <p className={`char-counter ${title.length >= 50 ? "limit-reached" : ""}`}>
+      {title.length} / 50 caracteres
+      </p>
 
       {/* Campo de entrada para la descripción */}
       <textarea
         placeholder="Descripción"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        maxLength={300} // Limita a 300 caracteres
       ></textarea>
+      <p className={`char-counter ${description.length >= 300 ? "limit-reached" : ""}`}>
+      {description.length} / 300 caracteres
+      </p>
+
 
       {/* Botón para enviar el formulario */}
       <button type="submit" className="form-submit-button">
