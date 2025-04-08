@@ -1,0 +1,276 @@
+@tailwind base; /* Importa los estilos base de Tailwind */
+@tailwind components; /* Importa los componentes personalizados de Tailwind */
+@tailwind utilities; /* Importa las utilidades de Tailwind */
+
+/* Fondo general */
+body {
+  margin: 0; /* Elimina el margen predeterminado del navegador */
+  padding: 0; /* Elimina el padding predeterminado */
+  background-color: #033466; /* Color de fondo azul oscuro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente principal */
+  color: white; /* Color de texto blanco */
+}
+
+/* Contenedor general de la app */
+.app-container {
+  display: flex; /*organizar contenido */
+  flex-direction: column; /* Organiza en columna */
+  align-items: center; /* Centra horizontalmente */
+  padding: 20px 10px;
+  min-height: 100vh; /* Altura mínima de toda la pantalla */
+  box-sizing: border-box;
+}
+
+/* Título principal de la aplicación */
+.main-title {
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 30px;
+  text-align: center; /* Centrado horizontal */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  font-size: 4.5rem; /* Tamaño grande de fuente */
+  margin-top: 0;
+}
+
+/* Contenedor de columnas principales */
+.main-content {
+  display: flex;
+  flex-direction: column; /* Columnas por defecto */
+  gap: 20px; /* Espacio entre columnas */
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px 10px;
+  box-sizing: border-box; /* Calcula el tamaño incluyendo padding */
+}
+
+@media screen and (min-width: 768px) {
+  .main-content {
+    flex-direction: row; /* Cambia a filas en pantallas medianas o grandes */
+    justify-content: space-between;
+  }
+}
+
+/* Estilo para ambas columnas (formulario y tareas) */
+.left-column,
+.right-column {
+  background-color: #fff;
+  color: #033466;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  flex: 1; /* Ocupan mismo espacio */
+  min-height: 300px; 
+}
+
+/*Botones generales*/
+button {
+  transition: background-color 0.2s ease-in-out; /* Transición suave al pasar el mouse */
+  font-weight: bold; /* Texto en negrita */
+  border-radius: 10px;
+  padding: 15px 56px;
+  font-size: 1.3rem;
+  margin-top: 0.3rem;
+  background-color: #002142;
+  color: white;
+}
+
+/* Título de secciones secundarias agre-list */
+h2 {
+  font-size: 3.2rem; /* Tamaño grande */
+  margin-top: 0.2rem;
+  font-weight: bold; /* Negrita */
+  margin-bottom: 40px; 
+  text-align: center; /* Centrado */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/*component TaskFilter*/
+.TaskFilter-container {
+  display: flex;
+  flex-direction: column; /* Para que se alineen en columna */
+  align-items: center;
+  gap: 12px; /* Espacio entre botones */
+  margin-bottom: 24px;
+}
+
+.TaskFilter-button {
+  width: 100%;
+  max-width: 450px; /* Ancho máximo para que no se estiren demasiado */
+  height: 5rem;
+  padding: 10px 16px;
+  background-color: #002142;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.TaskFilter-button:hover {
+  background-color: #1a252f;
+}
+
+.TaskFilter-button.active {
+  background-color: #22bac5;
+}
+
+/*component TasjForm*/
+input[type="text"],
+textarea {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de texto */
+  border: 1px solid #ccc; /* Borde gris claro */
+  margin-bottom: 10px; /* Margen inferior */
+  box-sizing: border-box; /* Incluye padding y borde */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none; /* Sin borde exterior */
+  border-color: #3498db; /* Borde azul */
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2); /* Sombra azul */
+  display: block; /* Comportamiento de bloque */
+  margin-left: auto; /* Centrado horizontal */
+  margin-right: auto; /* Centrado horizontal */
+}
+
+textarea {
+  min-height: 80px; /* Altura mínima */
+  resize: vertical; /* Solo permite redimensionar verticalmente */
+  overflow-y: auto; /* Scroll vertical si es necesario */
+}
+
+.form-submit-button {
+  background-color: #00264d;
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  /* Para centrarlo */
+  display: block;
+  margin: 1rem auto 0 auto;
+}
+
+/* Estilos para TaskItem */
+.task-item {
+  display: flex; /* Flexbox */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: flex-start; /* Alineación arriba */
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 16px; /* Espaciado interno */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  border: 1px solid #e5e7eb; /* Borde gris claro */
+  margin-bottom: 16px; /* Margen inferior */
+}
+
+.taskItem-info {
+  display: flex; /* Flexbox */
+  gap: 16px; /* Espacio entre checkbox y texto */
+  flex-grow: 1;
+  padding-right: 35px; /* Espacio entre texto y botones */
+}
+
+.taskItem-checkbox {
+  width: 20px; /* Ancho del checkbox */
+  height: 20px; /* Alto del checkbox */
+  accent-color: #22c55e; /* Verde de acento */
+  margin-top: 4px; /* Margen superior */
+}
+
+.taskItem-text h3 {
+  font-size: 1.125rem; /* Tamaño fuente */
+  font-weight: 600; /* Semi-negrita */
+  margin-bottom: 4px; /* Margen inferior */
+  word-wrap: break-word; /* Rompe palabras largas */
+  overflow-wrap: break-word; /* Compatibilidad extra */
+  max-width: 700px; /* Máximo ancho */
+  white-space: normal; /* Permite salto de línea */
+}
+
+.taskItem-completed {
+  text-decoration: line-through; /* Tachado */
+  color: #9ca3af; /* Gris */
+  font-size: 1.125rem; /* Tamaño fuente */
+  font-weight: 600; /* Semi-negrita */
+  margin-bottom: 4px; /* Margen inferior */
+}
+
+.taskItem-pending {
+  color: #000000; /* Negro */
+  font-size: 1.125rem; /* Tamaño fuente */
+  font-weight: 600; /* Semi-negrita */
+  margin-bottom: 4px; /* Margen inferior */
+}
+
+.task-description {
+  color: #4b5563; /* Gris medio */
+  word-wrap: break-word; /* Rompe líneas */
+  overflow-wrap: break-word; /* Compatibilidad */
+  word-break: break-word; /* Rompe palabras largas */
+  white-space: normal; /* Permite saltos de línea */
+  flex-wrap: wrap;
+}
+
+.taskItem-buttons {
+  display: flex; /* Flexbox */
+  gap: 8px; /* Espacio entre botones */
+  margin-top: 4px; /* Margen superior */
+}
+
+.taskItem-button {
+  background-color: #00264d; /* Fondo oscuro */
+  color: white; /* Texto blanco */
+  font-weight: bold; /* Negrita */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(12, 22, 151, 0.2); /* Sombra azul leve */
+  transition: background-color 0.2s ease; /* Transición */
+  font-size: 1rem; /* Tamaño de fuente */
+  cursor: pointer; /* Cursor de mano */
+}
+
+.taskItem-button:hover {
+  background-color: #22bac5; /* Azul más brillante */
+}
+
+/*component TaskList*/
+.task-list-container {
+  background-color: #fff;
+  color: #2c3e50;
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 4px;
+  width: 96%;
+  max-width: 1200px;
+}
+
+.no-tasks {
+  text-align: center; /* Centra el texto */
+  color: #000000;
+  font-style: italic;
+  justify-content: center; /* Centrado horizontal (si se usa flex) */
+  align-items: center; /* Centrado vertical (si se usa flex) */
+  font-size: 1.3rem;
+}
+
+.task-container {
+  background-color: transparent; /* Fondo transparente */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 12px; /* Bordes redondeados */
+}
+
+.task-stats {
+  margin: 10px 0 16px; /* Arriba y abajo combinados */
+  font-style: italic;
+  font-size: 1rem; /* Puedes ajustar según lo que prefieras */
+  color: #2c3e50; /* O #ddd, según contraste */
+  font-weight: 500;
+  text-align: center;
+}
