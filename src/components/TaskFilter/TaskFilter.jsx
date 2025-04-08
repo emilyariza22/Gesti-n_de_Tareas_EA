@@ -1,5 +1,5 @@
 // Importo el componente funcional TaskFilter
-const TaskFilter = ({ filter, setFilter }) => {
+const TaskFilter = ({setFilter }) => {
   return (
     // Contenedor principal que agrupa los botones de filtro
     <div className="TaskFilter-container">
@@ -15,7 +15,7 @@ const TaskFilter = ({ filter, setFilter }) => {
           // Cuando el botón se presiona, se actualiza el filtro actual
           onClick={() => setFilter(value)}
           // Asignamos clases: una clase base para el estilo y otra condicional si está activo
-          className={`TaskFilter-button ${filter === value ? "active" : ""}`}
+          className="TaskFilter-button"
           >
           {/* Mostramos el texto del botón (label) */}
           {label}

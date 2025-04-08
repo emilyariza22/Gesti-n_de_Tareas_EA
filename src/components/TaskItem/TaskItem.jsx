@@ -1,3 +1,4 @@
+import { FaEdit, FaTrash } from "react-icons/fa";
 // Definimos el componente TaskItem que recibe props relacionadas con la tarea
 const TaskItem = ({ task, toggleComplete, deleteTask, setEditingTask }) => {
   return (
@@ -33,11 +34,13 @@ const TaskItem = ({ task, toggleComplete, deleteTask, setEditingTask }) => {
         
         {/* Botón para editar la tarea, activa el modo edición */}
         <button onClick={() => setEditingTask(task)} className="taskItem-button">
+          <FaEdit className="inline-icon" />
           Editar
         </button>
 
         {/* Botón para eliminar la tarea */}
         <button onClick={() => deleteTask(task.id)} className="taskItem-button">
+          <FaTrash className="inline-icon" />
           Eliminar
         </button>
       </div>

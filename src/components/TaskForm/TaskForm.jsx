@@ -90,7 +90,7 @@ const TaskForm = ({ addTask, updateTask, editingTask, setEditingTask }) => {
 
       {/* Botón para enviar el formulario */}
       <button type="submit" className="form-submit-button">
-        {editingTask ? "Actualizar" : "Agregar tarea"}
+        {editingTask ? "Actualizar" : "+ Agregar"}
       </button>
     </form>
   );

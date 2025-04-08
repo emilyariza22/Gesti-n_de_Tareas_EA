@@ -86,7 +86,7 @@ const App = () => {
       </div>
 
       {/* Encabezado para la sección de listado */}
-      <h2 className="text-2xl font-bold mb-4 text-center drop-shadow">
+      <h2 className="task-list-title">
         Listado de tareas
       </h2>
 
@@ -100,8 +100,12 @@ const App = () => {
           setEditingTask={setEditingTask} // Cambiar a modo edición
         />
       </div>
+      <footer class="footer">
+        <p>&copy; 2025 Gestion de Tareas. Todos los derechos reservados.</p>
+      </footer>
     </div>
   );
 };
+
 
 export default App;
