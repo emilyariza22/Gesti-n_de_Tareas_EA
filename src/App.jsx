@@ -25,9 +25,11 @@ const App = () => {
 
   // Función para agregar una nueva tarea
   const addTask = (task) => {
-    setTasks([...tasks, { ...task, id: uuidv4(), completed: false }]); // Añade una tarea nueva con un ID único generado
+    setTasks([...tasks, { ...task, 
+      id: uuidv4(), 
+      completed: false, 
+      createdAt: new Date().toISOString(), },]); // Añade una tarea nueva con un ID único generado
   };
-
   // Función para actualizar una tarea existente
   const updateTask = (updatedTask) => {
     setTasks(tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))); // Reemplaza la tarea modificada

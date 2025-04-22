@@ -28,22 +28,31 @@ const TaskItem = ({ task, toggleComplete, deleteTask, setEditingTask }) => {
           <p className="task-description">{task.description}</p>
         </div>
       </div>
-
+   
       {/* Contenedor de los botones de acción */}
-      <div className="taskItem-buttons">
-        
-        {/* Botón para editar la tarea, activa el modo edición */}
-        <button onClick={() => setEditingTask(task)} className="taskItem-button">
-          <FaEdit className="inline-icon" />
-          Editar
-        </button>
-
-        {/* Botón para eliminar la tarea */}
-        <button onClick={() => deleteTask(task.id)} className="taskItem-button">
-          <FaTrash className="inline-icon" />
-          Eliminar
-        </button>
-      </div>
+        <div className="taskItem-buttons">
+          <div className="button-editar">
+            {/* Botón para editar la tarea, activa el modo edición */}
+            <button onClick={() => setEditingTask(task)} className="taskItem-button">
+              <FaEdit className="inline-icon" />
+              Editar
+            </button>
+          </div>
+          <div className="button-eliminar">
+            {/* Botón para eliminar la tarea */}
+            <button onClick={() => deleteTask(task.id)} className="taskItem-button">
+              <FaTrash className="inline-icon" />
+              Eliminar
+            </button>
+          </div>
+        </div>
+      
+        {/*Esto nos indicadala fecha y hora de la creacion de la tarea*/}
+        {task.createdAt && (
+        <p className="task-created">
+          Creada: {new Date(task.createdAt).toLocaleString()}
+        </p>
+        )}
     </div>
   );
 };

@@ -1,339 +1,330 @@
-@tailwind base; /* Importa los estilos base de Tailwind */
-@tailwind components; /* Importa los componentes personalizados de Tailwind */
-@tailwind utilities; /* Importa las utilidades de Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Fondo general */
+/* Estilo base para todo el body */
 body {
-  margin: 0; /* Elimina el margen predeterminado del navegador */
-  padding: 0; /* Elimina el padding predeterminado */
-  background-color: #287fd6; /* Color de fondo azul oscuro */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente principal */
-  color: white; /* Color de texto blanco */
+  margin: 0;
+  padding: 0;
+  background-color: #287fd6; /* Fondo azul claro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente */
+  color: white; /* Color del texto */
 }
 
-/* Contenedor general de la app */
+/* Contenedor principal de la app */
 .app-container {
-  display: flex; /*organizar contenido */
-  flex-direction: column; /* Organiza en columna */
-  align-items: center; /* Centra horizontalmente */
+  display: flex;
+  flex-direction: column; /* Apilar los elementos de arriba hacia abajo */
+  align-items: center; /* Centrar contenido */
   padding: 20px 10px;
-  min-height: 100vh; /* Altura mínima de toda la pantalla */
+  min-height: 100vh; /* Al menos toda la altura de la pantalla */
+  box-sizing: border-box; /* Incluir padding y border en las medidas */
+}
+
+/* Título principal */
+.main-title {
+  font-weight: bold; /* Negrita */
+  text-align: center; /* Centrar texto */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4); /* Sombra para darle profundidad */
+  font-size: 4rem; /* Tamaño grande */
+  margin: 0 0 2px 0; /* Margen en la parte inferior */
+}
+
+/* Contenedor de las columnas */
+.main-content {
+  display: flex;
+  flex-direction: column; /* Apilar los elementos verticalmente */
+  gap: 20px; /* Espacio entre las columnas */
+  width: 100%;
+  max-width: 1000px; /* Máxima anchura */
+  padding: 20px 10px;
   box-sizing: border-box;
 }
 
-/* Título principal de la aplicación */
-.main-title {
-  font-weight: bold; /* Texto en negrita */
-  margin-bottom: 2px;
-  text-align: center; /* Centrado horizontal */
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-  font-size: 4rem; /* Tamaño grande de fuente */
-  margin-top: 0;
-}
-
-/* Contenedor de columnas principales */
-.main-content {
-  display: flex;
-  flex-direction: column; /* Columnas por defecto */
-  gap: 20px; /* Espacio entre columnas */
-  width: 100%;
-  max-width: 1000px;
-  padding: 20px 10px;
-  box-sizing: border-box; /* Calcula el tamaño incluyendo padding */
-}
-
+/* Ajuste para pantallas grandes */
 @media screen and (min-width: 768px) {
   .main-content {
-    flex-direction: row; /* Cambia a filas en pantallas medianas o grandes */
-    justify-content: space-between;
+    flex-direction: row; /* Cambiar a columnas horizontales */
+    justify-content: space-between; /* Espaciado entre columnas */
   }
 }
 
-/* Estilo para ambas columnas (formulario y tareas) */
-.left-column,
-.right-column {
-  background-color: #fff;
-  color: #033466;
+/* Estilos comunes para las columnas */
+.left-column, .right-column {
+  background-color: #fff; /* Fondo blanco */
+  color: #033466; /* Color del texto */
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  flex: 1; /* Ocupan mismo espacio */
-  min-height: 300px; 
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra para profundidad */
+  flex: 1; /* Distribuir el espacio igualmente */
+  min-height: 300px; /* Altura mínima */
 }
 
-/*Botones generales*/
+/* Estilo general de botones */
 button {
-  transition: background-color 0.2s ease-in-out; /* Transición suave al pasar el mouse */
-  font-weight: bold; /* Texto en negrita */
-  border-radius: 10px;
-  padding: 15px 56px;
-  font-size: 1.7rem;
-  margin-top: 0.3rem;
-  background-color: #002142;
-  color: white;
+  transition: background-color 0.2s ease-in-out; /* Efecto de transición */
+  font-weight: bold; /* Negrita */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 15px 56px; /* Espaciado interno */
+  font-size: 1.7rem; /* Tamaño grande */
+  margin-top: 0.3rem; /* Margen superior */
+  background-color: #002142; /* Fondo oscuro */
+  color: white; /* Texto blanco */
 }
 
-/* Título de secciones secundarias agre-list */
+/* Efecto hover para los botones */
+button:hover {
+  background-color: #3c5974; /* Cambio de color en hover */
+}
+
+/* Títulos secundarios (h2) */
 h2 {
   font-size: 2.9rem; /* Tamaño grande */
-  margin-top: -0.17rem;
   font-weight: bold; /* Negrita */
-  margin-bottom: 20px; 
-  text-align: center; /* Centrado */
+  margin-bottom: 20px; /* Espacio abajo */
+  text-align: center; /* Centrar texto */
 }
 
+/* Título de la lista de tareas */
 .task-list-title {
-  font-size: 4rem; /* text-2xl */
+  font-size: 4rem;
   font-weight: bold;
-  margin-top: 0.2rem;
-
   text-align: center;
+  margin-top: 0.2rem; /* Margen superior */
 }
 
-/*component TaskFilter*/
+/* Estilos para el filtro de tareas */
 .TaskFilter-container {
   display: flex;
-  flex-direction: column; /* Para que se alineen en columna */
-  align-items: center;
-  gap: 12px; /* Espacio entre botones */
-  margin-bottom: 24px;
+  flex-direction: column; /* Apilar elementos */
+  align-items: center; /* Centrar contenido */
+  gap: 12px; /* Espaciado entre elementos */
+  margin-bottom: 24px; /* Espacio en la parte inferior */
 }
 
-/* Filtro general */
+/* Botones de filtro */
 .TaskFilter-button {
   width: 100%;
-  max-width: 450px;
-  height: 4rem;
-  padding: 10px 16px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.2s ease;
-  text-align: center;
+  max-width: 450px; /* Ancho máximo */
+  height: 4rem; /* Altura de botón */
+  padding: 10px 16px; /* Espaciado interno */
+  font-weight: bold; /* Negrita */
+  font-size: 1.5rem; /* Tamaño de fuente */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Mano en hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+  transition: background-color 0.2s ease; /* Transición de color */
 }
 
-/* Estilos específicos para cada filtro */
+/* Efecto hover de los botones de filtro */
+.TaskFilter-button:hover {
+  background-color: #3c5974; /* Cambio de color */
+}
+
+/* Estilos específicos para cada tipo de filtro */
 .TaskFilter-button.filter-all {
-  background-color: #6c757d; /* Gris: todas */
+  background-color: #6c757d; /* Color gris para "Todos" */
 }
 
 .TaskFilter-button.filter-active {
-  background-color: #0d6efd; /* Azul: tareas activas */
+  background-color: #0d6efd; /* Azul para "Activos" */
 }
 
 .TaskFilter-button.filter-completed {
-  background-color: #198754; /* Verde: completadas */
+  background-color: #198754; /* Verde para "Completados" */
 }
 
-/* Estado activo del filtro */
+/* Estilo para el filtro activo */
 .TaskFilter-button.active-filter {
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
-  outline: 2px solid #ffc107; /* Amarillo: resaltamos el botón activo */
-  outline-offset: 2px;
+  outline: 2px solid #ffc107; /* Borde amarillo */
+  outline-offset: 2px; /* Desplazamiento del borde */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6); /* Sombra interna */
 }
 
-/* Cambia el color de fondo al pasar el mouse */
-.TaskFilter-button:hover {
-  background-color: #3c5974;
-}
-
-/*component TasjForm*/
-input[type="text"],
-textarea {
+/* Estilos para los formularios de entrada */
+input[type="text"], textarea {
   width: 100%; /* Ancho completo */
   padding: 10px; /* Espaciado interno */
   border-radius: 8px; /* Bordes redondeados */
-  font-size: 1rem; /* Tamaño de texto */
-  border: 1px solid #ccc; /* Borde gris claro */
-  margin-bottom: 10px; /* Margen inferior */
-  box-sizing: border-box; /* Incluye padding y borde */
+  font-size: 1rem; /* Tamaño de fuente */
+  border: 1px solid #ccc; /* Borde gris */
+  margin-bottom: 10px; /* Espacio inferior */
+  box-sizing: border-box; /* Incluir padding y border en el tamaño */
 }
 
-input[type="text"]:focus,
-textarea:focus {
-  outline: none; /* Sin borde exterior */
-  border-color: #21445c; /* Borde azul */
+/* Foco en los campos de entrada */
+input[type="text"]:focus, textarea:focus {
+  outline: none; /* Quitar borde por defecto */
+  border-color: #21445c; /* Color de borde al enfocar */
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2); /* Sombra azul */
-  display: block; /* Comportamiento de bloque */
-  margin-left: auto; /* Centrado horizontal */
-  margin-right: auto; /* Centrado horizontal */
 }
 
-textarea {
-  min-height: 80px; /* Altura mínima */
-  resize: vertical; /* Solo permite redimensionar verticalmente */
-  overflow-y: auto; /* Scroll vertical si es necesario */
-}
-
-/* Estilo para el botón de formulario de envío */
+/* Estilo del botón del formulario */
 .form-submit-button {
-  background-color: #155aa0;
-  color: white;
-  font-weight: bold;
-  padding: 12px 24px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  display: block;
-  margin: 1rem auto 0 auto;
-  width: 100%;
-  height: 4rem;
-  margin-top: 0.8rem;
-  font-size: 1.5rem;
+  background-color: #155aa0; /* Fondo azul oscuro */
+  color: white; /* Texto blanco */
+  font-weight: bold; /* Negrita */
+  padding: 12px 24px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); /* Sombra */
+  cursor: pointer; /* Mano en hover */
+  width: 100%; /* Ancho completo */
+  height: 4rem; /* Altura del botón */
+  margin-top: 0.8rem; /* Margen superior */
+  font-size: 1.5rem; /* Tamaño de fuente */
 }
 
-/* Estilo para el hover del botón de formulario */
+/* Efecto hover en el botón del formulario */
 .form-submit-button:hover {
-  background-color: #14a0c4; /* Azul brillante al pasar el mouse */
+  background-color: #14a0c4; /* Cambio de color en hover */
 }
 
+/* Estilo para el contador de caracteres */
 .char-counter {
-  font-size: 0.85rem;
-  color: #666;
-  text-align: right;
-  margin-top: 0.5px;
-  margin-bottom: 10px;
-  padding-right: 4px;
+  font-size: 0.85rem; /* Tamaño de fuente pequeño */
+  color: #666; /* Color gris */
+  text-align: right; /* Alineación a la derecha */
+  margin-top: 0.5px; /* Margen superior */
+  margin-bottom: 10px; /* Margen inferior */
 }
 
+/* Color cuando se alcanza el límite de caracteres */
 .limit-reached {
-  color: #e63946; /* Rojo de alerta */
-  font-weight: bold;
+  color: #e63946; /* Rojo */
+  font-weight: bold; /* Negrita */
 }
 
-/* Estilos para TaskItem */
+/* Estilos para cada tarea en la lista */
 .task-item {
-  display: flex; /* Flexbox */
-  justify-content: space-between; /* Espacio entre elementos */
-  align-items: flex-start; /* Alineación arriba */
+  display: flex;
+  justify-content: space-between; /* Separar los elementos */
+  align-items: flex-start; /* Alineación superior */
   background-color: #ffffff; /* Fondo blanco */
-  padding: 16px; /* Espaciado interno */
+  padding: 16px;
   border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   border: 1px solid #e5e7eb; /* Borde gris claro */
-  margin-bottom: 16px; /* Margen inferior */
+  margin-bottom: 16px; /* Espacio inferior */
 }
 
+/* Contenedor de la información de la tarea */
 .taskItem-info {
-  display: flex; /* Flexbox */
-  gap: 16px; /* Espacio entre checkbox y texto */
-  flex-grow: 1;
-  padding-right: 35px; /* Espacio entre texto y botones */
+  display: flex;
+  gap: 16px; /* Espacio entre los elementos */
+  flex-grow: 1; /* Crecer para ocupar espacio */
+  padding-right: 35px; /* Espacio a la derecha */
 }
 
+/* Estilo del checkbox de la tarea */
 .taskItem-checkbox {
-  width: 20px; /* Ancho del checkbox */
-  height: 20px; /* Alto del checkbox */
-  accent-color: #22c55e; /* Verde de acento */
+  width: 20px; /* Ancho */
+  height: 20px; /* Alto */
+  accent-color: #22c55e; /* Color verde */
   margin-top: 4px; /* Margen superior */
 }
 
+/* Texto de la tarea */
 .taskItem-text h3 {
-  font-size: 1.125rem; /* Tamaño fuente */
-  font-weight: 600; /* Semi-negrita */
-  margin-bottom: 4px; /* Margen inferior */
-  word-wrap: break-word; /* Rompe palabras largas */
-  overflow-wrap: break-word; /* Compatibilidad extra */
+  font-size: 1.125rem; /* Tamaño de fuente */
+  font-weight: 600; /* Negrita */
+  margin-bottom: 4px; /* Espacio inferior */
+  word-wrap: break-word; /* Ajuste de línea */
   max-width: 700px; /* Máximo ancho */
-  white-space: normal; /* Permite salto de línea */
 }
 
+/* Texto tachado de las tareas completadas */
 .taskItem-completed {
   text-decoration: line-through; /* Tachado */
-  color: #9ca3af; /* Gris */
-  font-size: 1.125rem; /* Tamaño fuente */
-  font-weight: 600; /* Semi-negrita */
-  margin-bottom: 4px; /* Margen inferior */
+  color: #9ca3af; /* Color gris */
 }
 
+/* Texto de las tareas pendientes */
 .taskItem-pending {
-  color: #000000; /* Negro */
-  font-size: 1.125rem; /* Tamaño fuente */
-  font-weight: 600; /* Semi-negrita */
-  margin-bottom: 4px; /* Margen inferior */
+  color: #000000; /* Color negro */
 }
 
+/* Descripción de la tarea */
 .task-description {
-  color: #4b5563; /* Gris medio */
-  word-wrap: break-word; /* Rompe líneas */
-  overflow-wrap: break-word; /* Compatibilidad */
-  word-break: break-word; /* Rompe palabras largas */
-  white-space: normal; /* Permite saltos de línea */
-  flex-wrap: wrap;
+  color: #4b5563; /* Gris oscuro */
+  word-wrap: break-word; /* Ajuste de línea */
 }
 
+/* Botones de cada tarea */
 .taskItem-buttons {
-  display: flex; /* Flexbox */
-  gap: 8px; /* Espacio entre botones */
+  display: flex;
+  gap: 8px; /* Espaciado entre botones */
   margin-top: 4px; /* Margen superior */
 }
 
+/* Estilo de cada botón de tarea */
 .taskItem-button {
   background-color: #00264d; /* Fondo oscuro */
   color: white; /* Texto blanco */
   font-weight: bold; /* Negrita */
   padding: 10px 20px; /* Espaciado interno */
   border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(12, 22, 151, 0.2); /* Sombra azul leve */
+  box-shadow: 0 2px 4px rgba(12, 22, 151, 0.2); /* Sombra */
   transition: background-color 0.2s ease; /* Transición */
   font-size: 1rem; /* Tamaño de fuente */
-  cursor: pointer; /* Cursor de mano */
+  cursor: pointer; /* Mano en hover */
 }
 
+/* Efecto hover en los botones de tarea */
 .taskItem-button:hover {
-  background-color: #2c3e50; /* Azul más brillante */
+  background-color: #2c3e50; /* Cambio de color */
 }
 
+/* Iconos dentro de los botones */
 .inline-icon {
-  margin-right: 6px;
-  vertical-align: middle;
+  margin-right: 6px; /* Espacio derecho */
+  vertical-align: middle; /* Alineación vertical */
 }
 
-/*component TaskList*/
+/* Fecha de creación de la tarea */
+.task-created {
+  font-size: 0.875rem; /* Tamaño pequeño */
+  color: #6b7280; /* Gris claro */
+  margin-top: 8px; /* Margen superior */
+}
+
+/* Estilos de la lista de tareas */
 .task-list-container {
-  background-color: #fff;
-  color: #2c3e50;
-  padding: 24px;
-  border-radius: 12px;
-  margin-top: 4px;
-  width: 96%;
-  max-width: 1200px;
-}
-
-.no-tasks {
-  text-align: center; /* Centra el texto */
-  color: #000000;
-  font-style: italic;
-  justify-content: center; /* Centrado horizontal (si se usa flex) */
-  align-items: center; /* Centrado vertical (si se usa flex) */
-  font-size: 1.3rem;
-}
-
-.task-container {
-  background-color: transparent; /* Fondo transparente */
-  padding: 10px; /* Espaciado interno */
+  background-color: #fff; /* Fondo blanco */
+  color: #2c3e50; /* Color del texto */
+  padding: 24px; /* Espaciado interno */
   border-radius: 12px; /* Bordes redondeados */
+  margin-top: 4px; /* Margen superior */
+  width: 96%; /* Ancho máximo */
+  max-width: 1200px; /* Ancho máximo */
 }
 
+/* Mensaje cuando no hay tareas */
+.no-tasks {
+  text-align: center; /* Centrar texto */
+  color: #000000; /* Color negro */
+  font-style: italic; /* Cursiva */
+  font-size: 1.3rem; /* Tamaño de fuente */
+}
+
+/* Contenedor de estadísticas de tareas */
 .task-stats {
-  margin: 10px 0 16px; /* Arriba y abajo combinados */
-  font-style: italic;
-  font-size: 1.5rem; /* Puedes ajustar según lo que prefieras */
-  color: #2c3e50; /* O #ddd, según contraste */
-  font-weight: 500;
-  text-align: center;
+  margin: 10px 0 16px;
+  font-style: italic; /* Cursiva */
+  font-size: 1.5rem; /* Tamaño de fuente */
+  color: #2c3e50; /* Color de texto */
+  font-weight: 500; /* Peso medio */
+  text-align: center; /* Centrar texto */
 }
 
+/* Estilos del pie de página */
 .footer {
   display: flex;
-  background-color: #000618;
-  color: white;
-  width: 100%;
-  text-align: center;
-  padding: 0px 10px;
-  margin-top: 40px;
-  position: relative;
+  background-color: #000618; /* Fondo oscuro */
+  color: white; /* Texto blanco */
+  width: 100%; /* Ancho completo */
+  text-align: center; /* Centrar texto */
+  padding: 0px 10px; /* Espaciado interno */
+  margin-top: 40px; /* Margen superior */
+  position: relative; /* Posición relativa */
 }
