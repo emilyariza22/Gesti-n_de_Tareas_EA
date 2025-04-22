@@ -99,13 +99,12 @@ h2 {
   margin-bottom: 24px;
 }
 
+/* Filtro general */
 .TaskFilter-button {
   width: 100%;
-  max-width: 450px; /* Ancho máximo para que no se estiren demasiado */
+  max-width: 450px;
   height: 4rem;
   padding: 10px 16px;
-  background-color: #002142;
-  color: white;
   font-weight: bold;
   font-size: 1.5rem;
   border: none;
@@ -113,8 +112,30 @@ h2 {
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s ease;
+  text-align: center;
 }
 
+/* Estilos específicos para cada filtro */
+.TaskFilter-button.filter-all {
+  background-color: #6c757d; /* Gris: todas */
+}
+
+.TaskFilter-button.filter-active {
+  background-color: #0d6efd; /* Azul: tareas activas */
+}
+
+.TaskFilter-button.filter-completed {
+  background-color: #198754; /* Verde: completadas */
+}
+
+/* Estado activo del filtro */
+.TaskFilter-button.active-filter {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
+  outline: 2px solid #ffc107; /* Amarillo: resaltamos el botón activo */
+  outline-offset: 2px;
+}
+
+/* Cambia el color de fondo al pasar el mouse */
 .TaskFilter-button:hover {
   background-color: #3c5974;
 }
@@ -147,6 +168,7 @@ textarea {
   overflow-y: auto; /* Scroll vertical si es necesario */
 }
 
+/* Estilo para el botón de formulario de envío */
 .form-submit-button {
   background-color: #155aa0;
   color: white;
@@ -155,7 +177,6 @@ textarea {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  /* Para centrarlo */
   display: block;
   margin: 1rem auto 0 auto;
   width: 100%;
@@ -163,6 +184,12 @@ textarea {
   margin-top: 0.8rem;
   font-size: 1.5rem;
 }
+
+/* Estilo para el hover del botón de formulario */
+.form-submit-button:hover {
+  background-color: #14a0c4; /* Azul brillante al pasar el mouse */
+}
+
 .char-counter {
   font-size: 0.85rem;
   color: #666;
@@ -175,10 +202,6 @@ textarea {
 .limit-reached {
   color: #e63946; /* Rojo de alerta */
   font-weight: bold;
-}
-
-.form-submit-button:hover {
-  background-color: #14a0c4; /* Cambia a un azul brillante al pasar el mouse */
 }
 
 /* Estilos para TaskItem */

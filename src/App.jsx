@@ -1,111 +1,87 @@
-// Importamos los hooks necesarios desde React
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";// Para generar un ID único por cada tarea
-// Importamos los componentes que vamos a usar en esta app
-import TaskForm from "./components/TaskForm/TaskForm"; // Formulario para crear/editar tareas
-import TaskList from "./components/TaskList/TaskList"; // Lista de tareas
-import TaskFilter from "./components/TaskFilter/TaskFilter"; // Botones de filtro
-import TaskStats from "./components/TaskStats/TaskStats"; // Estadísticas de tareas
+import { v4 as uuidv4 } from "uuid"; // Para generar un ID único
+import TaskForm from "./components/TaskForm/TaskForm"; // Componente para agregar/editar tareas
+import TaskList from "./components/TaskList/TaskList"; // Componente que muestra el listado de tareas
+import TaskFilter from "./components/TaskFilter/TaskFilter"; // Componente para filtrar tareas (activas, completadas, todas)
+import TaskStats from "./components/TaskStats/TaskStats"; // Componente que muestra estadísticas de tareas
 
-// Definimos el componente principal App
 const App = () => {
-
-  // Creamos el estado "tasks" (lista de tareas)
+  // Estado que guarda la lista de tareas
   const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem("tasks"); // Intentamos recuperar tareas guardadas
-    return savedTasks ? JSON.parse(savedTasks) : [];  // Si existen, las parseamos, si no, devolvemos un array vacío
+    const savedTasks = localStorage.getItem("tasks"); // Intenta recuperar las tareas guardadas del localStorage
+    return savedTasks ? JSON.parse(savedTasks) : []; // Si existen, los analiza; si no, empieza con un lista vacía
   });
 
-  // Estado para controlar qué filtro está activo (all, active, completed)
+  // Estado para el filtro de tareas (todos, activos, completados)
   const [filter, setFilter] = useState("all");
-  // Estado para saber si estamos editando una tarea (y cuál)
+
+  // Estado para gestionar la tarea que se está editando
   const [editingTask, setEditingTask] = useState(null);
 
-  // Este guarda las tareas en localStorage cada vez que cambian
+  // Efecto para actualizar el localStorage cuando las tareas cambian
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks)); // Convertimos a string para guardarlo
-  }, [tasks]); // Solo se ejecuta cuando 'tasks' cambia
+    localStorage.setItem("tasks", JSON.stringify(tasks)); // Guarda las tareas actuales en localStorage
+  }, [tasks]);
 
-  // Función que agrega una nueva tarea
+  // Función para agregar una nueva tarea
   const addTask = (task) => {
-    setTasks([
-      ...tasks, // Copiamos las tareas anteriores
-      { ...task, id: uuidv4(), completed: false } // Añadimos una nueva tarea con ID y estado "no completada"
-    ]);
+    setTasks([...tasks, { ...task, id: uuidv4(), completed: false }]); // Añade una tarea nueva con un ID único generado
   };
 
-  // Función que actualiza una tarea ya existente
+  // Función para actualizar una tarea existente
   const updateTask = (updatedTask) => {
-    setTasks(tasks.map((task) =>
-      task.id === updatedTask.id ? updatedTask : task // Reemplazamos la tarea editada
-    ));
-    setEditingTask(null); // Terminamos el modo edición
+    setTasks(tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))); // Reemplaza la tarea modificada
+    setEditingTask(null); // Deja de estar en modo de edición
   };
 
-  // Función que elimina una tarea usando su ID
-  const deleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId)); // Filtramos la tarea a eliminar
-  };
+  // Función para eliminar una tarea
+  const deleteTask = (taskId) => setTasks(tasks.filter((task) => task.id !== taskId)); // Filtra la tarea a eliminar
 
-  // Función para cambiar el estado "completed" de una tarea
+  // Función para alternar el estado de completado de una tarea
   const toggleComplete = (taskId) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === taskId
-          ? { ...task, completed: !task.completed } // Si es la tarea, invertimos su estado completado
-          : task // Si no, la dejamos igual
-      )
-    );
+    setTasks(tasks.map((task) =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    )); // Cambia el estado "completed" de la tarea indicada
   };
 
-  // JSX que define lo que se renderiza en pantalla
-  {/* Contenedor principal de la app */}
   return (
     <div className="app-container">
-      
       <h1 className="main-title">Gestión de Tareas</h1>
-
-      {/* Separa (formulario) de (filtros) */}
       <div className="main-content">
-
-        {/* Columna formulario */}
         <div className="left-column">
+          {/* Componente para crear y editar tareas */}
           <TaskForm
-            addTask={addTask} // Función para agregar tarea
-            updateTask={updateTask} // Función para actualizar tarea
-            editingTask={editingTask} // Tarea que se está editando
-            setEditingTask={setEditingTask} // Cambia el estado de edición
+            addTask={addTask}
+            updateTask={updateTask}
+            editingTask={editingTask}
+            setEditingTask={setEditingTask}
           />
         </div>
-
-        {/* Columna derecha: filtros y estadísticas */}
         <div className="right-column">
-          <TaskFilter filter={filter} setFilter={setFilter} /> {/* Botones para filtrar */}
-          <TaskStats tasks={tasks} /> {/* Muestra cuántas tareas pendientes hay */}
+          {/* Componente para filtrar tareas por estado */}
+          <TaskFilter filter={filter} setFilter={setFilter} />
+          {/* Componente para mostrar estadísticas de tareas */}
+          <TaskStats tasks={tasks} />
         </div>
       </div>
-
-      {/* Encabezado para la sección de listado */}
-      <h2 className="task-list-title">
-        Listado de tareas
-      </h2>
-
-      {/* Aquí se muestra la lista filtrada de tareas */}
-      <div className="task-list-container">
-        <TaskList
-          tasks={tasks} // Lista total de tareas
-          filter={filter} // Filtro activo
-          toggleComplete={toggleComplete} // Marcar como completada/incompleta
-          deleteTask={deleteTask} // Eliminar tarea
-          setEditingTask={setEditingTask} // Cambiar a modo edición
-        />
-      </div>
-      <footer class="footer">
-        <p>&copy; 2025 Gestion de Tareas. Todos los derechos reservados.</p>
+      <h2 className="task-list-title">Listado de tareas</h2>
+      {/* Componente que lista las tareas filtradas */}
+      <TaskList
+        tasks={tasks.filter((task) => {
+          if (filter === "active") return !task.completed; // Solo tareas no completadas
+          if (filter === "completed") return task.completed; // Solo tareas completadas
+          return true; // Si el filtro es 'all', muestra todas
+        })}
+        filter={filter}
+        toggleComplete={toggleComplete}
+        deleteTask={deleteTask}
+        setEditingTask={setEditingTask}
+      />
+      <footer className="footer">
+        <p>&copy; 2025 Gestión de Tareas. Todos los derechos reservados.</p>
       </footer>
     </div>
   );
 };
-
 
 export default App;

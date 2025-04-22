@@ -8,7 +8,7 @@ const TaskForm = ({ addTask, updateTask, editingTask, setEditingTask }) => {
   const [description, setDescription] = useState("");
 
   // Creamos una referencia al formulario para poder hacer scroll hacia él
-  const formRef = useRef(null); // <- Aquí creas la ref
+  const formRef = useRef(null);
 
   // Este useEffect se activa cuando cambia editingTask
   useEffect(() => {
@@ -64,7 +64,7 @@ const TaskForm = ({ addTask, updateTask, editingTask, setEditingTask }) => {
       {/* Campo de entrada para el título */}
       <input
         type="text"
-        placeholder="Título de tu Tarea"
+        placeholder="Encabezado"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         autoFocus
