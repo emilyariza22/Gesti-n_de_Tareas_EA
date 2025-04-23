@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #287fd6; /* Fondo azul claro */
+  background-color: #0b51a1; /* Fondo azul claro */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente */
   color: white; /* Color del texto */
 }
@@ -21,7 +21,7 @@ body {
   box-sizing: border-box; /* Incluir padding y border en las medidas */
 }
 
-/* Título principal */
+/* Título principal Gestion de tareas */
 .main-title {
   font-weight: bold; /* Negrita */
   text-align: center; /* Centrar texto */
@@ -52,37 +52,21 @@ body {
 /* Estilos comunes para las columnas */
 .left-column, .right-column {
   background-color: #fff; /* Fondo blanco */
-  color: #033466; /* Color del texto */
+  color: #002857; /* Color del texto */
   padding: 25px;
   border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra para profundidad */
+  box-shadow: 0 4px 8px rgba(52, 67, 202, 0.3); /* Sombra para profundidad */
   flex: 1; /* Distribuir el espacio igualmente */
   min-height: 300px; /* Altura mínima */
 }
 
-/* Estilo general de botones */
-button {
-  transition: background-color 0.2s ease-in-out; /* Efecto de transición */
-  font-weight: bold; /* Negrita */
-  border-radius: 10px; /* Bordes redondeados */
-  padding: 15px 56px; /* Espaciado interno */
-  font-size: 1.7rem; /* Tamaño grande */
-  margin-top: 0.3rem; /* Margen superior */
-  background-color: #002142; /* Fondo oscuro */
-  color: white; /* Texto blanco */
-}
-
-/* Efecto hover para los botones */
-button:hover {
-  background-color: #3c5974; /* Cambio de color en hover */
-}
-
-/* Títulos secundarios (h2) */
+/* Títulos secundarios Agregar Tarea */
 h2 {
-  font-size: 2.9rem; /* Tamaño grande */
+  font-size: 3rem; /* Tamaño grande */
   font-weight: bold; /* Negrita */
-  margin-bottom: 20px; /* Espacio abajo */
+  margin-bottom: 25px; /* Espacio abajo */
   text-align: center; /* Centrar texto */
+  margin-top: 1px;
 }
 
 /* Título de la lista de tareas */
@@ -91,6 +75,7 @@ h2 {
   font-weight: bold;
   text-align: center;
   margin-top: 0.2rem; /* Margen superior */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 /* Estilos para el filtro de tareas */
@@ -102,44 +87,57 @@ h2 {
   margin-bottom: 24px; /* Espacio en la parte inferior */
 }
 
-/* Botones de filtro */
-.TaskFilter-button {
-  width: 100%;
-  max-width: 450px; /* Ancho máximo */
-  height: 4rem; /* Altura de botón */
-  padding: 10px 16px; /* Espaciado interno */
+/* Estilo general de botones de all, active, completed*/
+button {
+  transition: background-color 0.2s ease-in-out; /* Efecto de transición */
   font-weight: bold; /* Negrita */
-  font-size: 1.5rem; /* Tamaño de fuente */
-  border: none; /* Sin borde */
-  border-radius: 8px; /* Bordes redondeados */
-  cursor: pointer; /* Mano en hover */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
-  transition: background-color 0.2s ease; /* Transición de color */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 15px 56px; /* Espaciado interno */
+  font-size: 1.7rem; /* Tamaño grande */
+  margin-top: 0.3rem; /* Margen superior */
+  width: 400px;
 }
 
-/* Efecto hover de los botones de filtro */
-.TaskFilter-button:hover {
-  background-color: #3c5974; /* Cambio de color */
+/* Botón Todas (amarillo) */
+.button-all {
+  background-color: #facc15; /* amarillo-500 */
+  color: black;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+.button-all:hover {
+  background-color: #eab308; /* amarillo-600 */
 }
 
-/* Estilos específicos para cada tipo de filtro */
-.TaskFilter-button.filter-all {
-  background-color: #6c757d; /* Color gris para "Todos" */
+/* Botón Activas (naranja) */
+.button-active {
+  background-color: #ff8127; /* naranja-500 */
+  color: black;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+.button-active:hover {
+  background-color: #ea580c; /* naranja-600 */
 }
 
-.TaskFilter-button.filter-active {
-  background-color: #0d6efd; /* Azul para "Activos" */
+/* Botón Completadas (verde) */
+.button-completed {
+  background-color: #38e615; /* verde-500 */
+  color: black;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
-
-.TaskFilter-button.filter-completed {
-  background-color: #198754; /* Verde para "Completados" */
-}
-
-/* Estilo para el filtro activo */
-.TaskFilter-button.active-filter {
-  outline: 2px solid #ffc107; /* Borde amarillo */
-  outline-offset: 2px; /* Desplazamiento del borde */
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6); /* Sombra interna */
+.button-completed:hover {
+  background-color: #16a34a; /* verde-600 */
 }
 
 /* Estilos para los formularios de entrada */
@@ -162,7 +160,7 @@ input[type="text"]:focus, textarea:focus {
 
 /* Estilo del botón del formulario */
 .form-submit-button {
-  background-color: #155aa0; /* Fondo azul oscuro */
+  background-color: #000c42; /* Fondo azul oscuro */
   color: white; /* Texto blanco */
   font-weight: bold; /* Negrita */
   padding: 12px 24px; /* Espaciado interno */
@@ -177,7 +175,7 @@ input[type="text"]:focus, textarea:focus {
 
 /* Efecto hover en el botón del formulario */
 .form-submit-button:hover {
-  background-color: #14a0c4; /* Cambio de color en hover */
+  background-color: #00158a; /* Cambio de color en hover */
 }
 
 /* Estilo para el contador de caracteres */
@@ -195,7 +193,6 @@ input[type="text"]:focus, textarea:focus {
   font-weight: bold; /* Negrita */
 }
 
-/* Estilos para cada tarea en la lista */
 .task-item {
   display: flex;
   justify-content: space-between; /* Separar los elementos */
@@ -206,14 +203,18 @@ input[type="text"]:focus, textarea:focus {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   border: 1px solid #e5e7eb; /* Borde gris claro */
   margin-bottom: 16px; /* Espacio inferior */
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 /* Contenedor de la información de la tarea */
 .taskItem-info {
   display: flex;
-  gap: 16px; /* Espacio entre los elementos */
-  flex-grow: 1; /* Crecer para ocupar espacio */
-  padding-right: 35px; /* Espacio a la derecha */
+  gap: 12px; /* Espacio entre los elementos */
+  flex: 1 1 auto; /* Crecer para ocupar espacio */
+  min-width: 0;
+  max-width: calc(100% - 160px); /* Deja espacio para los botones */
 }
 
 /* Estilo del checkbox de la tarea */
@@ -221,53 +222,83 @@ input[type="text"]:focus, textarea:focus {
   width: 20px; /* Ancho */
   height: 20px; /* Alto */
   accent-color: #22c55e; /* Color verde */
-  margin-top: 4px; /* Margen superior */
+  margin-top: -57px; /* Margen superior */
 }
 
 /* Texto de la tarea */
 .taskItem-text h3 {
-  font-size: 1.125rem; /* Tamaño de fuente */
+  font-size: 1.5rem; /* Tamaño de fuente */
   font-weight: 600; /* Negrita */
-  margin-bottom: 4px; /* Espacio inferior */
+  margin-bottom: 20px; /* Espacio inferior */
   word-wrap: break-word; /* Ajuste de línea */
-  max-width: 700px; /* Máximo ancho */
+  max-width: 100%; /* Máximo ancho */
+  white-space: normal; /* Permite salto de línea */
+  overflow-wrap: break-word;
+  margin-top: -65px;
 }
 
-/* Texto tachado de las tareas completadas */
-.taskItem-completed {
-  text-decoration: line-through; /* Tachado */
-  color: #9ca3af; /* Color gris */
-}
-
-/* Texto de las tareas pendientes */
+/* Título de tarea (completada y pendiente) */
+.taskItem-completed,
 .taskItem-pending {
-  color: #000000; /* Color negro */
+  font-weight: bold;
+  font-size: 1rem;
+  color: #1c1f24;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 0;
 }
 
 /* Descripción de la tarea */
 .task-description {
-  color: #4b5563; /* Gris oscuro */
-  word-wrap: break-word; /* Ajuste de línea */
+  margin-top: 8px;
+  color: #4b5563;
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 86%; /* Máximo ancho */
 }
-
 /* Botones de cada tarea */
 .taskItem-buttons {
   display: flex;
-  gap: 8px; /* Espaciado entre botones */
-  margin-top: 4px; /* Margen superior */
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 140px;
+  flex-shrink: 0;
+  gap: 10px;
+}
+/* Estilo de botones */
+.taskItem-button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-/* Estilo de cada botón de tarea */
-.taskItem-button {
-  background-color: #00264d; /* Fondo oscuro */
-  color: white; /* Texto blanco */
-  font-weight: bold; /* Negrita */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(12, 22, 151, 0.2); /* Sombra */
-  transition: background-color 0.2s ease; /* Transición */
-  font-size: 1rem; /* Tamaño de fuente */
-  cursor: pointer; /* Mano en hover */
+/* Contenedor horizontal de los botones */
+.taskItem-buttons-row {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 12px; /* Separación entre botones y la fecha */
+}
+/* Fecha de creación de la tarea */
+.task-created {
+  margin-top: -20px;
+  font-size: 0.8rem;
+  color: #080808;
+  position: absolute;
+  bottom: 0; /* Coloca la fecha en la parte inferior */
+  right: 95px; /* Alinea la fecha a la derecha */
+  margin-bottom: 0; /* Elimina el margen superior innecesario */
 }
 
 /* Efecto hover en los botones de tarea */
@@ -275,17 +306,30 @@ input[type="text"]:focus, textarea:focus {
   background-color: #2c3e50; /* Cambio de color */
 }
 
+/* Estilo específico para el botón "Eliminar" */
+.button-eliminar .taskItem-button {
+  background-color: #e74c3c; /* Rojo */
+}
+
+/* Efecto hover en el botón "Eliminar" */
+.button-eliminar .taskItem-button:hover {
+  background-color: #c0392b; /* Rojo más oscuro */
+}
+
+/* Estilo específico para el botón "Editar" */
+.button-editar .taskItem-button {
+  background-color: #3498db; /* Azul */
+}
+
+/* Efecto hover en el botón "Editar" */
+.button-editar .taskItem-button:hover {
+  background-color: #2980b9; /* Azul más oscuro */
+}
+
 /* Iconos dentro de los botones */
 .inline-icon {
   margin-right: 6px; /* Espacio derecho */
   vertical-align: middle; /* Alineación vertical */
-}
-
-/* Fecha de creación de la tarea */
-.task-created {
-  font-size: 0.875rem; /* Tamaño pequeño */
-  color: #6b7280; /* Gris claro */
-  margin-top: 8px; /* Margen superior */
 }
 
 /* Estilos de la lista de tareas */
